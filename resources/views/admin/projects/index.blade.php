@@ -23,7 +23,8 @@
         <td> {{ $project->slug}}</td>
         <td> {{ $project->content}}</td>
         <td> <a href="{{ route('admin.projects.show',['project'=>$project->id])}}"  class="btn btn-info m-2">Look</a>
-        </tr>
+        <a href="{{ route('admin.projects.edit',['project'=>$project->id])}}"  class="btn btn-warning m-2">Modify</a>
+    </tr>
         @endforeach
     </tbody>
     </table>

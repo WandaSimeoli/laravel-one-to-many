@@ -55,9 +55,11 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.projects.edit', compact('project'));
+
     }
 
     /**
@@ -65,7 +67,15 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:70',
+            'content' => 'required|max:100'
+        ]);
+        $project->title= $request->input('title');
+        $project->slug= $request->input('slug');
+        $project->content= $request->input('content');
+        $project->save();
+        return redirect()->route('project.show', ['project'=>$project->id]);
     }
 
     /**
