@@ -18,8 +18,8 @@
         @enderror
       </div>
   <div class="mb-3">
-  <label class="form-label" for="inputImage">Image</label>
-  <input type="text" class="form-control @error('slug') is-invalid @enderror" id="inputImage" name="slug" 
+  <label class="form-label" for="inputslug">slug</label>
+  <input type="text" class="form-control @error('slug') is-invalid @enderror" id="inputslug" name="slug" 
   placeholder="Enter url" value="{{old('slug', $project->slug)}}">
 </div>
 @error('slug')

@@ -39,7 +39,7 @@ class ProjectController extends Controller
         $project = new Project;
         $project->title=$request->input('title');
         $project->content=$request->input('content');
-        $project->slug=$request->input('slug');
+        $project->subtitle=$request->input('subtitle');
         $project->save();
         return redirect()->route('admin.project.show', ['project'=>$project->id]);
     }
@@ -72,7 +72,7 @@ class ProjectController extends Controller
             'content' => 'required|max:100'
         ]);
         $project->title= $request->input('title');
-        $project->slug= $request->input('slug');
+        $project->subtitle= $request->input('subtitle');
         $project->content= $request->input('content');
         $project->save();
         return redirect()->route('project.show', ['project'=>$project->id]);

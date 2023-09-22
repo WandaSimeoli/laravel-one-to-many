@@ -12,6 +12,7 @@
         <th scope="col">Title</th>
         <th scope="col">Slug</th>
         <th scope="col">Content</th>
+        <th scope="col">Type</th>
         <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@
         <td>{{ $project->title}}</td>
         <td> {{ $project->slug}}</td>
         <td> {{ $project->content}}</td>
+        <td> {{ $project->type->title}}</td>
         <td> <a href="{{ route('admin.projects.show',['project'=>$project->id])}}"  class="btn btn-info m-2">Look</a>
         <a href="{{ route('admin.projects.edit',['project'=>$project->id])}}"  class="btn btn-warning m-2">Modify</a>
     </tr>

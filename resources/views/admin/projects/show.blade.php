@@ -9,8 +9,9 @@
         <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col">Slug</th>
+        <th scope="col">slug</th>
         <th scope="col">Content</th>
+        <th scope="col">Type</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td>{{ $project->title}}</td>
         <td> {{ $project->slug}}</td>
         <td> {{ $project->content}}</td>
+        <td> {{ $project->type->title}}</td>
         </tr>
     </tbody>
     </table>

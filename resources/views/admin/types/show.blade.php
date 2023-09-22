@@ -20,5 +20,15 @@
         </tr>
     </tbody>
     </table>
+    <h2>Related Projects</h2>
+    <ul>
+        @foreach($type->projects as $project)
+        <li>
+        <a href="{{route('admin.projects.show', ['project'=> $project->id])}}">
+        {{ $project->title}}
+        </a>
+        </li>
+    @endforeach
+    </ul>
 </div>
 @endsection

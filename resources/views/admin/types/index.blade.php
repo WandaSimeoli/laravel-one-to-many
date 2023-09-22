@@ -20,7 +20,7 @@
         <td>{{ $type->id}}</td>
         <td>{{ $type->title}}</td>
         <td> {{ $type->slug}}</td>
-        <td> <a href="{{ route('admin.types.show',['type'=>$types->id])}}"  class="btn btn-info m-2">Look</a>
+        <td> <a href="{{ route('admin.types.show',['type'=>$type->id])}}"  class="btn btn-info m-2">Look</a>
         <a href=""  class="btn btn-warning m-2">Modify</a>
     </tr>
         @endforeach
