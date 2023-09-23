@@ -20,7 +20,14 @@
         <td>{{ $project->title}}</td>
         <td> {{ $project->slug}}</td>
         <td> {{ $project->content}}</td>
-        <td> {{ $project->type->title}}</td>
+        <td> 
+            @if ($project->type) 
+            <a href="{{ route('admin.projects.store', ['type'=> $project->type->id])}}">
+            {{ $project->type->title}}</a> 
+            @else 
+            - 
+            @endif
+        </td>
         </tr>
     </tbody>
     </table>

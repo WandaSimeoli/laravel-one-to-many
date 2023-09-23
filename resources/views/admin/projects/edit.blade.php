@@ -37,6 +37,17 @@
         {{$message}}
         @enderror
       </div>
+      <div class="mb-3 container-sm">
+        <label for="typeId" class="form-label">Type</label>
+        <select name="type_id" id="type_id" class="form-select">
+        <option selected value="">Open this select menu</option>
+        @foreach($types as $type)
+        <option value="{{$type->id}}"
+        @if (old('type_id', $project->title) == $type->id) selected
+        @endif>
+        {{$type->title}}</option>
+        @endforeach
+        </select>
       <div class="container-sm">
       <button type="submit" class="btn btn-success">Update</button>
       </div>

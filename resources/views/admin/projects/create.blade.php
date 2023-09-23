@@ -39,11 +39,12 @@
       <div class="mb-3 container-sm">
         <label for="typeId" class="form-label">Type</label>
         <select name="type_id" id="type_id" class="form-select">
-        <option selected>Open this select menu</option>
+        <option selected value="">Open this select menu</option>
         @foreach($types as $type)
         <option value="{{$type->id}}"
         @if (old('type_id') == $type->id) selected
-        @endif>{{$type->title}}</option>
+        @endif>
+        {{$type->title}}</option>
         @endforeach
         </select>
       </div>
