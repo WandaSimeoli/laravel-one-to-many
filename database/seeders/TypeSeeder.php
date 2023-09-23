@@ -18,11 +18,13 @@ class TypeSeeder extends Seeder
         Schema::withoutForeignKeyConstraints(function () {
             Type::truncate();
         });
-        for ($i=0; $i <10 ; $i++) { 
-            $type = new Type();
-            $type->title= fake()->words(3, true);
-            $type->slug = Str::of($type->title)->slug('-');
-            $type->save();
+        $type = ['Back-end','Front-end'];
+        foreach ($type as $title) {
+            $slug = str()->slug($title);
+          Type::create([
+            'title'=>$title,
+            'slug'=>$slug,
+          ]);
         }
     }
 }

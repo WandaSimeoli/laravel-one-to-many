@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types= Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -33,15 +35,17 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => 'required|max:70',
-            'content' => 'required|max:100'
+            'content' => 'required|max:100',
+            'type_id'=> 'nullable|exists:types,id'
         ]);
 
         $project = new Project;
         $project->title=$request->input('title');
         $project->content=$request->input('content');
-        $project->subtitle=$request->input('subtitle');
+        $project->slug=$request->input('slug');
+        $project->type_id=$request->input('type_id');
         $project->save();
-        return redirect()->route('admin.project.show', ['project'=>$project->id]);
+        return redirect()->route('admin.projects.show', ['project'=>$project->id]);
     }
 
     /**
@@ -72,7 +76,7 @@ class ProjectController extends Controller
             'content' => 'required|max:100'
         ]);
         $project->title= $request->input('title');
-        $project->subtitle= $request->input('subtitle');
+        $project->slug= $request->input('slug');
         $project->content= $request->input('content');
         $project->save();
         return redirect()->route('project.show', ['project'=>$project->id]);
